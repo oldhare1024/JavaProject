@@ -8,3 +8,4 @@ public class and_or {
         System.out.println(x + "," + y);
     }
 }
+
