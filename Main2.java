@@ -1,4 +1,4 @@
-public class Main {
+public class Main2 {
     public static void main(String[] args) {
         int x = 12, y = 10;
         if ((x == 12) && ((y = (x + y)) > 20)) x++;
