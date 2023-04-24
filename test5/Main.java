@@ -21,7 +21,7 @@ public class Main {
                 String t = scanner.next();
             }
         }
-        System.out.printf("%.2f%n",sum);//输出总分
-        System.out.printf("%.2f%n",sum/i);//输出平均分
+        System.out.printf("%.2f\n",sum);//输出总分
+        System.out.printf("%.2f",sum/i);//输出平均分
     }
 }
