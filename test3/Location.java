@@ -11,8 +11,8 @@ public class Location {
         Location L = new Location();
         L.maxValue = a[0][0];
         int i, j;
-        for (i=0; i < a.length; i++) {
-            for (j=0; j < a[i].length; j++) {
+        for (i = 0; i < a.length; i++) {
+            for (j = 0; j < a[i].length; j++) {
                 if (a[i][j] > L.maxValue) {
                     L.maxValue = a[i][j];
                     L.row = i;
@@ -34,7 +34,7 @@ public class Location {
                 a[i][j] = S.nextDouble();
             }
         }
-        Location Loc= Location.locateLargetst(a);
+        Location Loc = Location.locateLargetst(a);
         System.out.println("最大元素及其下标是: " + Loc.maxValue + "在(" + Loc.row + "," + Loc.column + ")");
     }
 }

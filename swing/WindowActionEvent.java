@@ -1,8 +1,8 @@
 package swing;
 
-import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class WindowActionEvent extends JFrame {
     JTextField text;

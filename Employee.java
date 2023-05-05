@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 class Employee {
     String name;
     double salary;
@@ -11,7 +12,7 @@ class Employee {
     }
 
     public void show() {
-        System.out.println(name+","+salary+","+start.DateString());
+        System.out.println(name + "," + salary + "," + start.DateString());
     }
 }
 

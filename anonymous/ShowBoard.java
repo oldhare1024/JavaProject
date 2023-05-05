@@ -1,7 +1,7 @@
 package anonymous;
 
 public class ShowBoard {
-    void showMess(OutputAlphabet show){
+    void showMess(OutputAlphabet show) {
         show.output();
     }
 }

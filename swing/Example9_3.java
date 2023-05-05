@@ -1,7 +1,5 @@
 package swing;
 
-import javax.swing.*;
-
 public class Example9_3 {
     public static void main(String[] arg) {
         ComponentInWindow win = new ComponentInWindow();

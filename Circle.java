@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 class Circle {
     double radius;
 
@@ -23,7 +24,7 @@ class Main3 {
             System.out.println("Radius must be positive!");
         } else {
             Circle circle1 = new Circle(radius);
-            System.out.printf("%.2f,%.2f", circle1.getLength(),circle1.getArea());
+            System.out.printf("%.2f,%.2f", circle1.getLength(), circle1.getArea());
         }
     }
 }

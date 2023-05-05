@@ -50,14 +50,14 @@ class UseComputer {
 }
 
 // In the main method, create instances of the Add, Sub, Mul, and Div classes and call the useCom method of the UseComputer class to perform calculations
-public class Main{
-    public static void main(String[] agrs){
-        Scanner sc=new Scanner(System.in);
-        int a=sc.nextInt();
-        int b=sc.nextInt();
-        UseComputer.useCom(new Add(),a,b);
-        UseComputer.useCom(new Sub(),a,b);
-        UseComputer.useCom(new Mul(),a,b);
-        UseComputer.useCom(new Div(),a,b);
+public class Main {
+    public static void main(String[] agrs) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        UseComputer.useCom(new Add(), a, b);
+        UseComputer.useCom(new Sub(), a, b);
+        UseComputer.useCom(new Mul(), a, b);
+        UseComputer.useCom(new Div(), a, b);
     }
 }

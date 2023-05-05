@@ -1,17 +1,21 @@
 class Counter1 {
     int i = 0;
 }
+
 class Reference {
     public void plus(int i) {
         i++;
     }
+
     public void plus(Counter1 c) {
         c.i++;
     }
+
     public void create(Counter1 c) {
         c = new Counter1();
         c.i++;
     }
+
     public static void main(String[] args) {
         int i = 0;
         Reference r = new Reference();

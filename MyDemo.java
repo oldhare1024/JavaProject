@@ -4,6 +4,7 @@ class Outer {
             System.out.println("Secret!");
         }
     }
+
     public Inner getInner() {
         return new Inner();
     }

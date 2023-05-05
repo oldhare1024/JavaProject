@@ -2,7 +2,7 @@ package swing;
 
 import javax.swing.*;
 
-public class PanelNullLayout extends JPanel{
+public class PanelNullLayout extends JPanel {
     JButton button;
     JTextField text;
 

@@ -6,7 +6,7 @@ public class Company {
 
     //¹¹Ôìº¯Êý
     Company(Employee[] employee) {
-        this.employee=employee;
+        this.employee = employee;
     }
 
 }

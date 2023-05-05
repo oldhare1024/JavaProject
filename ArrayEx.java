@@ -3,9 +3,9 @@ import java.util.Scanner;
 
 class ArrayEx {
     public static void main(String[] args) {
-        int i, n,k = 0, sum = 0, max;
-        Scanner scanner=new Scanner(System.in);
-        n=scanner.nextInt();
+        int i, n, k = 0, sum = 0, max;
+        Scanner scanner = new Scanner(System.in);
+        n = scanner.nextInt();
         int[] arr = new int[n];
         Random r = new Random();
         for (i = 0; i < n; i++) {
@@ -25,7 +25,7 @@ class ArrayEx {
                 k = i;
             }
         }
-        k+=1;
+        k += 1;
         System.out.println("\n");
         System.out.println("数组元素之和为" + sum);
         System.out.println("最大值为" + max + "位置为" + k);

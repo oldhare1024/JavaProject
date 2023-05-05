@@ -1,6 +1,6 @@
 package test5;
 
-import java.math.*;
+import java.math.BigInteger;
 
 public class HandleBigInteger {
     public static void main(String[] args) {

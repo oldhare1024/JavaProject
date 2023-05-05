@@ -10,18 +10,19 @@ public class Main {
         Scanner scanner = new Scanner(System.in); //使用构造方法Scanner(String str)创建scanner
         String regex = "[^0123456789.]+";
         scanner.useDelimiter(regex); /*scanner调用useDelimiter(String regex)*/
-        double sum=0; int i=0;
-        while(scanner.hasNext()){
-            try{
+        double sum = 0;
+        int i = 0;
+        while (scanner.hasNext()) {
+            try {
                 double score = scanner.nextDouble(); //scanner调用nextDouble()返回数字单词
-                sum = sum+score; i++;
+                sum = sum + score;
+                i++;
                 System.out.println(score);
-            }
-            catch(InputMismatchException exp){
+            } catch (InputMismatchException exp) {
                 String t = scanner.next();
             }
         }
-        System.out.printf("%.2f\n",sum);//输出总分
-        System.out.printf("%.2f",sum/i);//输出平均分
+        System.out.printf("%.2f\n", sum);//输出总分
+        System.out.printf("%.2f", sum / i);//输出平均分
     }
 }

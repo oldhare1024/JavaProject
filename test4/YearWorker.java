@@ -1,6 +1,6 @@
 package test4;
 
-public class YearWorker extends Employee{
+public class YearWorker extends Employee {
     private double year, salary;
 
     YearWorker(double y, double s) {

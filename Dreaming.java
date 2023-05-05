@@ -1,7 +1,7 @@
 public class Dreaming {
     public static void main(String[] args) {
         double[] salary = {6000};
-        int[] nCarsHouses = {0,0};
+        int[] nCarsHouses = {0, 0};
         DayDreaming(salary, nCarsHouses);
         System.out.print(salary[0] + "," + nCarsHouses[0]);
         System.out.println("," + nCarsHouses[1]);

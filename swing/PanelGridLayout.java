@@ -1,9 +1,9 @@
 package swing;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 
-public class PanelGridLayout extends JPanel{
+public class PanelGridLayout extends JPanel {
     PanelGridLayout() {
         GridLayout grid = new GridLayout(12, 12);
         setLayout(grid);

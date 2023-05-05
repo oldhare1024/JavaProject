@@ -2,17 +2,21 @@ import java.util.Scanner;
 
 abstract class Shape {
     abstract double area();
+
     abstract String getShapeName();
 }
 
 class Circle1 extends Shape {
     double r;
+
     Circle1(double r) {
         this.r = r;
     }
+
     double area() {
         return Math.PI * r * r;
     }
+
     String getShapeName() {
         return "Circle";
     }
@@ -20,13 +24,16 @@ class Circle1 extends Shape {
 
 class Rectangle extends Shape {
     double h, w;
+
     Rectangle(double h, double w) {
         this.h = h;
         this.w = w;
     }
+
     double area() {
         return h * w;
     }
+
     String getShapeName() {
         return "Rectangle";
     }

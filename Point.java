@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 class Point {
     int x;
     int y;
