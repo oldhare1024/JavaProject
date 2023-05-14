@@ -1,0 +1,105 @@
+package rjgc.body;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
+public class Login extends JFrame implements ActionListener {
+    JTextField nameField;
+    JPasswordField passwordField;
+
+    public Login() {
+        setTitle("系统登录");
+        setLayout(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(500, 200, 350, 300);
+        //添加账号密码文本及文本框
+        JLabel nameJLabel = new JLabel("账号");
+        nameField = new JTextField();
+        JLabel passJLabel = new JLabel("密码");
+        passwordField = new JPasswordField();
+        nameJLabel.setBounds(50, 15, 100, 100);
+        nameField.setBounds(100, 50, 200, 30);
+        passJLabel.setBounds(50, 70, 100, 100);
+        passwordField.setBounds(100, 100, 200, 30);
+        //登录取消按钮
+        JButton loginButton = new JButton("登录");
+        JButton registerButton = new JButton("注册");
+        JButton cancelButton = new JButton("取消");
+        loginButton.setBounds(50, 150, 80, 30);
+        registerButton.setBounds(135, 150, 80, 30);
+        cancelButton.setBounds(220, 150, 80, 30);
+        //添加到面版
+        add(nameJLabel);
+        add(nameField);
+        add(passJLabel);
+        add(passwordField);
+        add(loginButton);
+        add(registerButton);
+        add(cancelButton);
+        //给登录取消按钮添加控件
+        loginButton.setActionCommand("登录");
+        registerButton.setActionCommand("注册");
+        cancelButton.setActionCommand("取消");
+        loginButton.addActionListener(this);
+        registerButton.addActionListener(this);
+        cancelButton.addActionListener(this);
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        Login login = new Login();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getActionCommand().equals("登录")) {
+            try {
+                rjgc.body.DBUtil.initst();
+                String stuname = nameField.getText();
+                String stupwd = passwordField.getText();
+                //根据数据库表中的用户名查密码进行匹配
+                rjgc.body.DBUtil.rs = rjgc.body.DBUtil.st.executeQuery("select password from user where name='" + stuname + "'");
+                if (rjgc.body.DBUtil.rs.next()) {
+                    if (rjgc.body.DBUtil.rs.getString(1).equals(stupwd)) {
+                        //如果密码正确就显示主页面
+                        this.dispose();
+                        new Main().show();
+                    } else {
+                        //如果密码错误弹出框
+                        JOptionPane.showMessageDialog(null, "密码错误，请联系管理员");
+                    }
+                } else {
+                    //姓名不对弹出提示框
+                    JOptionPane.showMessageDialog(null, "用户不存在");
+                }
+                rjgc.body.DBUtil.closeDB();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        } else if (e.getActionCommand().equals("注册")) {
+            try {
+                rjgc.body.DBUtil.initst();
+                String stuname = nameField.getText();
+                String stupwd = passwordField.getText();
+                //根据数据库表中的用户名查密码进行匹配
+                rjgc.body.DBUtil.rs = rjgc.body.DBUtil.st.executeQuery("select password from user where name='" + stuname + "'");
+                if (rjgc.body.DBUtil.rs.next()) {
+                    //如果用户名已存在弹出提示框
+                    JOptionPane.showMessageDialog(null, "用户名已存在");
+                } else {
+                    //如果用户名不存在则插入新用户信息
+                    rjgc.body.DBUtil.st.executeUpdate("insert into user(name,password) values('" + stuname + "','" + stupwd + "')");
+                    JOptionPane.showMessageDialog(null, "注册成功");
+                }
+                rjgc.body.DBUtil.closeDB();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            System.exit(0);
+        }
+    }
+}
