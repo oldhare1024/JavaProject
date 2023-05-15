@@ -12,10 +12,10 @@ import java.sql.SQLException;
 
 public class insert extends JFrame {
     private static final long serialVersionUID = 1L;
-    private JButton b1, b2;
-    private JLabel c1, c2, c3, c4, c5, c6, c7, c8, c9, name;
-    private JTextField t1, t2, t3, t4, t5, t6, t7, t8, t9;
-    private String x1, x2, x3, x4, x5, x6, x7, x8, x9;
+    private final JButton b1, b2;
+    private final JLabel c1, c2, c3, c4, c5, c6, c7, c8, name;
+    private final JTextField t1, t2, t3, t4, t5, t6, t7, t8;
+    private String x1, x2, x3, x4, x5, x6, x7, x8, x9, x10;
 
     public insert() {
         super("insert");
@@ -29,17 +29,15 @@ public class insert extends JFrame {
 
         c1 = new JLabel("企业编号：", JLabel.RIGHT);
         c2 = new JLabel("企业名称：", JLabel.RIGHT);
-        c3 = new JLabel("企业代表人：", JLabel.RIGHT);
+        c3 = new JLabel("企业地址：", JLabel.RIGHT);
         c4 = new JLabel("企业联系电话：", JLabel.RIGHT);
-        c5 = new JLabel("企业谷电量：", JLabel.RIGHT);
-        c6 = new JLabel("企业峰电量：", JLabel.RIGHT);
-        c7 = new JLabel("年月份：", JLabel.RIGHT);
-        c8 = new JLabel("企业总用电量：", JLabel.RIGHT);
-        c9 = new JLabel("企业用电费：", JLabel.RIGHT);
+        c5 = new JLabel("企业代表人：", JLabel.RIGHT);
+        c6 = new JLabel("谷电量：", JLabel.RIGHT);
+        c7 = new JLabel("峰电量：", JLabel.RIGHT);
+        c8 = new JLabel("年月份：", JLabel.RIGHT);
 
         b1 = new JButton("确定");
         b2 = new JButton("取消");
-
 
         t1 = new JTextField(200);
         t2 = new JTextField(200);
@@ -49,32 +47,29 @@ public class insert extends JFrame {
         t6 = new JTextField(200);
         t7 = new JTextField(200);
         t8 = new JTextField(200);
-        t9 = new JTextField(200);
 
         name.setBounds(240, 10, 200, 30);
 
-        c1.setBounds(80, 60, 100, 30);
-        c2.setBounds(80, 90, 100, 30);
-        c3.setBounds(80, 120, 100, 30);
-        c4.setBounds(80, 150, 100, 30);
-        c5.setBounds(80, 180, 100, 30);
-        c6.setBounds(80, 210, 100, 30);
-        c7.setBounds(80, 240, 100, 30);
-        c8.setBounds(80, 270, 100, 30);
-        c9.setBounds(80, 300, 100, 30);
+        c1.setBounds(80, 100, 100, 30);
+        c2.setBounds(80, 130, 100, 30);
+        c3.setBounds(80, 160, 100, 30);
+        c4.setBounds(60, 190, 120, 30);
+        c5.setBounds(80, 220, 100, 30);
+        c6.setBounds(80, 250, 100, 30);
+        c7.setBounds(80, 280, 100, 30);
+        c8.setBounds(80, 310, 100, 30);
 
-        b1.setBounds(250, 280, 100, 25);
-        b2.setBounds(450, 280, 100, 25);
+        b1.setBounds(250, 380, 100, 25);
+        b2.setBounds(450, 380, 100, 25);
 
-        t1.setBounds(200, 60, 350, 30);
-        t2.setBounds(200, 90, 350, 30);
-        t3.setBounds(200, 120, 350, 30);
-        t4.setBounds(200, 150, 350, 30);
-        t5.setBounds(200, 180, 350, 30);
-        t6.setBounds(200, 210, 350, 30);
-        t7.setBounds(200, 240, 350, 30);
-        t8.setBounds(200, 270, 350, 30);
-        t9.setBounds(200, 300, 350, 30);
+        t1.setBounds(200, 100, 350, 30);
+        t2.setBounds(200, 130, 350, 30);
+        t3.setBounds(200, 160, 350, 30);
+        t4.setBounds(200, 190, 350, 30);
+        t5.setBounds(200, 220, 350, 30);
+        t6.setBounds(200, 250, 350, 30);
+        t7.setBounds(200, 280, 350, 30);
+        t8.setBounds(200, 310, 350, 30);
 
         ButtonactionPerformed buttoner = new ButtonactionPerformed();
         ButtonactionPerformed2 buttoner2 = new ButtonactionPerformed2();
@@ -95,7 +90,6 @@ public class insert extends JFrame {
         container.add(t6);
         container.add(t7);
         container.add(t8);
-        container.add(t9);
 
         container.add(c1);
         container.add(c2);
@@ -105,14 +99,12 @@ public class insert extends JFrame {
         container.add(c6);
         container.add(c7);
         container.add(c8);
-        container.add(c9);
 
         container.setBackground(Color.lightGray);
         container.setLayout(null);
 
         setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     public static void main(String[] args) {
@@ -123,20 +115,24 @@ public class insert extends JFrame {
     private class ButtonactionPerformed implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             PreparedStatement prepstmt1;
-            String url = "jdbc:sqlserver://localhost:1433;DatabaseName=elect";
+            String url = "jdbc:sqlserver://localhost:1433;DatabaseName=elect;encrypt=true;trustServerCertificate=true;";
             String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
             String user = "sa";
             String password = "110120";
             Connection conn;
             x1 = t1.getText();
-            x2 = t1.getText();
-            x3 = t1.getText();
-            x4 = t1.getText();
-            x5 = t1.getText();
-            x6 = t1.getText();
-            x7 = t1.getText();
-            x8 = t1.getText();
-            x9 = t1.getText();
+            x2 = t2.getText();
+            x3 = t3.getText();
+            x4 = t4.getText();
+            x5 = t5.getText();
+            x6 = t6.getText();
+            x7 = t7.getText();
+            x8 = t8.getText();
+            x9 = x6 + x7;
+            float f1 = Float.parseFloat(x6) * 5.2f;
+            float f2 = Float.parseFloat(x7) * 7.5f;
+            float f3 = f1 + f2;
+            x10 = String.valueOf(f3);
             try {
                 Class.forName(driver);
             } catch (ClassNotFoundException arg0) {
@@ -144,19 +140,28 @@ public class insert extends JFrame {
             }
             try {
                 conn = DriverManager.getConnection(url, user, password);
-                conn.setAutoCommit(true);
+                conn.setAutoCommit(false);
                 System.out.println("和数据库已经建立连接！！！");
-                prepstmt1 = conn.prepareStatement("INSERT INTO company(id,name,address,phonenum,linkman)" + "Value(?+?+?+?+?)");
+                prepstmt1 = conn.prepareStatement("INSERT INTO company(id,name,address,phonenum,linkman) Values(?,?,?,?,?);");
                 prepstmt1.setString(1, x1);
                 prepstmt1.setString(2, x2);
                 prepstmt1.setString(3, x3);
                 prepstmt1.setString(4, x4);
                 prepstmt1.setString(5, x5);
-                prepstmt1.setString(6, x6);
-                prepstmt1.setString(7, x7);
-                prepstmt1.setString(8, x8);
-                prepstmt1.setString(9, x9);
                 prepstmt1.executeUpdate();
+
+                prepstmt1 = conn.prepareStatement("INSERT INTO ebill(id,vvolume,pvolume,date,svolume,sbill) Values(?,?,?,?,?,?);");
+                prepstmt1.setString(1, x1);
+                prepstmt1.setString(2, x6);
+                prepstmt1.setString(3, x7);
+                prepstmt1.setString(4, x8);
+                prepstmt1.setString(5, x9);
+                prepstmt1.setString(6, x10);
+                prepstmt1.executeUpdate();
+
+                JOptionPane.showMessageDialog(null, "插入成功");
+                conn.commit();
+                conn.setAutoCommit(true);
                 conn.close();
             } catch (SQLException eb) {
                 System.out.println("SQL exception occur. Message is:" + eb.getMessage());

@@ -12,14 +12,14 @@ import java.sql.Statement;
 
 public class delect extends JFrame {
     private static final long serialVersionUID = 1L;
-    private JButton b1, b2;
-    private JLabel c1, name;
-    private JTextField t1;
+    private final JButton b1, b2;
+    private final JLabel c1, name;
+    private final JTextField t1;
     private String x1;
 
     public delect() {
         super("delect");
-        setSize(800, 600);
+        setSize(600, 300);
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception ignored) {
@@ -39,8 +39,8 @@ public class delect extends JFrame {
 
         c1.setBounds(80, 60, 100, 30);
 
-        b1.setBounds(250, 280, 100, 25);
-        b2.setBounds(450, 280, 100, 25);
+        b1.setBounds(200, 200, 100, 25);
+        b2.setBounds(400, 200, 100, 25);
 
         t1.setBounds(200, 60, 350, 30);
 
@@ -63,7 +63,7 @@ public class delect extends JFrame {
         container.setLayout(null);
 
         setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
     }
 
@@ -74,7 +74,7 @@ public class delect extends JFrame {
 
     private class ButtonactionPerformed implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            String url = "jdbc:sqlserver://localhost:1433;DatabaseName=elect";
+            String url = "jdbc:sqlserver://localhost:1433;DatabaseName=elect;encrypt=true;trustServerCertificate=true;";
             String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
             String user = "sa";
             String password = "110120";
@@ -88,10 +88,13 @@ public class delect extends JFrame {
             }
             try {
                 conn = DriverManager.getConnection(url, user, password);
-                conn.setAutoCommit(true);
+                conn.setAutoCommit(false);
                 System.out.println("和数据库已经建立连接！！！");
                 stmt = conn.createStatement();
-                stmt.executeUpdate("delect from company where id=" + x1);
+                stmt.executeUpdate("DELETE FROM company WHERE company.id = " + x1);
+                stmt.executeUpdate("DELETE FROM ebill WHERE ebill.id = " + x1);
+                conn.setAutoCommit(true);
+                JOptionPane.showMessageDialog(null, "删除成功");
                 conn.close();
             } catch (SQLException eb) {
                 System.out.println("SQL exception occur. Message is:" + eb.getMessage());

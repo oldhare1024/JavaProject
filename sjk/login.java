@@ -10,13 +10,14 @@ import java.sql.*;
 
 public class login extends JFrame {
     private static final long serialVersionUID = 1L;
-    private JLabel username, password;
-    private JTextField username2, password2, message;
-    private JButton button;
-    private JRadioButton box1, box2;
-    private ButtonGroup buttongroup;
+    private final JLabel username, password;
+    private final JTextField username2, password2, message;
+    private final JButton button;
+    private final JRadioButton box1, box2;
+    private final ButtonGroup buttongroup;
     private String a, s, c = "", b = "";
     private int level = 2;
+    private boolean flag = false;
 
     public login() {
         super("login");
@@ -89,7 +90,7 @@ public class login extends JFrame {
             s = password2.getText();
             Statement stmt;
             ResultSet rs;
-            String url = "jdbc:sqlserver://localhost:1433;DatabaseName=elect";
+            String url = "jdbc:sqlserver://localhost:1433;DatabaseName=elect;encrypt=true;trustServerCertificate=true;";
             String user = "sa";
             String password = "110120";
             Connection conn;
@@ -104,13 +105,14 @@ public class login extends JFrame {
                 conn.setAutoCommit(true);
                 System.out.println("和数据库已经建立连接！！！");
                 stmt = conn.createStatement();
-                rs = stmt.executeQuery("select * from worker ");
+                rs = stmt.executeQuery("select * from euser ");
                 if (c.equals(a) && b.equals(s)) {
                     message.setText("账号或密码不能为空");
                 } else {
                     while (rs.next()) {
-                        if (rs.getString(2).equals(a) && rs.getString(3).equals(s)) {
-                            message.setText("数据库连接成功！");
+                        if (rs.getString(2).equals(a) && rs.getString(3).equals(s) && rs.getInt(4) == level) {
+                            message.setText("登录成功！");
+                            flag = true;
                             if (level == 1) {
                                 operate2 app2 = new operate2();
                                 app2.setLocationRelativeTo(null);
@@ -118,10 +120,10 @@ public class login extends JFrame {
                                 operate app3 = new operate();
                                 app3.setLocationRelativeTo(null);
                             }
-                        } else {
-                            message.setText("用户名和密码或者身份不正确");
                         }
                     }
+                    if (!flag)
+                        message.setText("用户名和密码或者身份不正确");
                 }
                 rs.close();
                 stmt.close();
