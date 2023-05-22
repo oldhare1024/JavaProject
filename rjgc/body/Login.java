@@ -25,25 +25,30 @@ public class Login extends JFrame implements ActionListener {
         passwordField.setBounds(100, 100, 200, 30);
         //登录取消按钮
         JButton loginButton = new JButton("登录");
-        JButton registerButton = new JButton("注册");
+        //JButton registerButton = new JButton("注册");
+        JButton changepwdButton = new JButton("修改密码");
         JButton cancelButton = new JButton("取消");
-        loginButton.setBounds(50, 150, 80, 30);
-        registerButton.setBounds(135, 150, 80, 30);
-        cancelButton.setBounds(220, 150, 80, 30);
+        loginButton.setBounds(30, 150, 80, 30);
+        //registerButton.setBounds(135, 150, 80, 30);
+        changepwdButton.setBounds(130, 150, 100, 30);
+        cancelButton.setBounds(250, 150, 80, 30);
         //添加到面版
         add(nameJLabel);
         add(nameField);
         add(passJLabel);
         add(passwordField);
         add(loginButton);
-        add(registerButton);
+        //add(registerButton);
+        add(changepwdButton);
         add(cancelButton);
         //给登录取消按钮添加控件
         loginButton.setActionCommand("登录");
-        registerButton.setActionCommand("注册");
+        //registerButton.setActionCommand("注册");
+        changepwdButton.setActionCommand("修改密码");
         cancelButton.setActionCommand("取消");
         loginButton.addActionListener(this);
-        registerButton.addActionListener(this);
+        //registerButton.addActionListener(this);
+        changepwdButton.addActionListener(this);
         cancelButton.addActionListener(this);
 
         setVisible(true);
@@ -61,12 +66,17 @@ public class Login extends JFrame implements ActionListener {
                 String stuname = nameField.getText();
                 String stupwd = passwordField.getText();
                 //根据数据库表中的用户名查密码进行匹配
-                rjgc.body.DBUtil.rs = rjgc.body.DBUtil.st.executeQuery("select password from user where name='" + stuname + "'");
+                rjgc.body.DBUtil.rs = rjgc.body.DBUtil.st.executeQuery("select password,level from user where name='" + stuname + "'");
                 if (rjgc.body.DBUtil.rs.next()) {
                     if (rjgc.body.DBUtil.rs.getString(1).equals(stupwd)) {
                         //如果密码正确就显示主页面
                         this.dispose();
-                        new Main().show();
+                        String level1 = "1";
+                        String level = rjgc.body.DBUtil.rs.getString(2);
+                        if (level.equals(level1))
+                            new Main().show();
+                        else
+                            new Main2().show();
                     } else {
                         //如果密码错误弹出框
                         JOptionPane.showMessageDialog(null, "密码错误，请联系管理员");
@@ -79,9 +89,9 @@ public class Login extends JFrame implements ActionListener {
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
-        } else if (e.getActionCommand().equals("注册")) {
+        } /*else if (e.getActionCommand().equals("注册")) {
             try {
-                rjgc.body.DBUtil.initst();
+                rjgc.body.DBUtil.initst();*
                 String stuname = nameField.getText();
                 String stupwd = passwordField.getText();
                 //根据数据库表中的用户名查密码进行匹配
@@ -98,6 +108,8 @@ public class Login extends JFrame implements ActionListener {
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
+        } */ else if (e.getActionCommand().equals("修改密码")) {
+            ChangePwd cp = new ChangePwd();
         } else {
             System.exit(0);
         }
