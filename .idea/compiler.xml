@@ -4,5 +4,6 @@
     <excludeFromCompile>
       <file url="file://$PROJECT_DIR$/if_print.java" />
     </excludeFromCompile>
+    <bytecodeTargetLevel target="8" />
   </component>
 </project>
