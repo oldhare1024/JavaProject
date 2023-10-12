@@ -3,10 +3,9 @@ package test3;
 public class Fan {
     static final int SLOW = 1, MEDIUM = 2, FAST = 3;
     public String color;
-    private
-    int speed;
-    boolean on;
-    double radius;
+    private int speed;
+    private boolean on;
+    private double radius;
 
     Fan() {
         color = "blue";
@@ -58,7 +57,6 @@ public class Fan {
     public static void main(String[] args) {
         Fan A = new Fan();
         Fan B = new Fan();
-
         String color1 = "yellow";
         boolean on1 = true;
         double radius1 = 10.0;

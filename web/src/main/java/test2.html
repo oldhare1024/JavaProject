@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单标签的学习</title>
+</head>
+<body>
+<form action="register.html" method="post" style="border:1px solid red">
+    昵称: <input name="nickName" type="text"/><br/>
+    密码: <input type="text"/><br/>
+    性别：<input name="gender" type="radio" value="male"/>男
+    <input name="gender" type="radio" value="female"/>女<br/>
+    爱好: <input name="hobby" type="checkbox" value="basketball"/>篮球
+    <input name="hobby" type="checkbox" value="football"/>足球
+    <input name="hobby" type="checkbox" value="earth"/>地球<br/>
+    星座: <select name="star">
+    <option value="1">白羊座</option>
+    <option value="2">巨蟹座</option>
+    <option selected value="3">金牛座</option>
+</select><br/>
+    备注:<textarea cols="30" name="remark" rows="3"></textarea><br/>
+    <input type="submit" value="注册"/>
+    <input type="reset" value="重置"/>
+    <input type="button" value="这是一个按钮"/>
+</form>
+</body>
+</html>

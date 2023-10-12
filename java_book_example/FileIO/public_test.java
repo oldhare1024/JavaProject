@@ -1,4 +1,4 @@
-package book_problem;
+package java_book_example.FileIO;
 
 class public_test {
     private final int a;
